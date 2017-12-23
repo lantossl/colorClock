@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by lantossl (http://jsbin.com/busaxi/3/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+  <title>Színóra</title>
+<style id="jsbin-css">
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Amatic SC', cursive;
+}
+
+#clock {
+  text-align: center;
+  bottom: -50%;
+  position: relative;
+  font-size: 100px;
+  margin-top: -50px;
+}
+</style>
+</head>
+<body>
+<div id="clock">12:34:56</div>
+<script id="jsbin-javascript">
+function colorClock () {
+  var date = new Date();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+
+  if (hours < 10) {
+    var hours = '0' + hours;
+  }
+  if (minutes < 10) {
+    var minutes = '0' + minutes;
+  }
+  if (seconds < 10) {
+    var seconds = '0' + seconds;
+  }
+  
+  var hexColor = '#' + (100 - seconds) + (2 * minutes) + (10 * hours);
+  var clockFace = hours + ':' + minutes + ':' + seconds; 
+  document.body.style.background = hexColor;
+  document.getElementById('clock').innerHTML = clockFace;
+
+
+  setTimeout(function() {
+    colorClock();
+    }, 1000);
+}
+
+colorClock();
+</script>
+</body>
+</html>
